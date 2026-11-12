@@ -2,23 +2,18 @@ const prompt = require("prompt-sync")();
 
 async function main(){
 
-    await getWords()
-    // Random array of 5 letter words (in future fetch from API endpoint)
-    let words = ["apple", "bread", "mouth"];
-
     // Game instructions and prompt
     let instructions = "\nWelcome to Worldle. The rules are simple. Guess the 5 letter word of the day. You have six guesses. After each round, each letter of your guess is assigned a colour: \nGrey: not in the word \nYellow: in the word but in the wrong position \nGreen: in the word and in the right position. \n\nIf you correctly guess the word, all letters will be green and you win.\n\n"
 
     let promptBegin = "Shall we begin? (Y-Yes, N-No)";
     let gameStart = "Good luck. Happy Guessing below!";
     let congrats = "\nCongratulations! You win. The Word of the Day is";
-    let goodBye = "Thanks for playing Wordle. Goodbye.\n";
 
     // Game logic and architecture
 
     //Generate the word of the day, randomly
-    let wordOfTheDay = words[Math.floor(Math.random() * words.length)].toUpperCase();
-
+    let wordOfTheDay = await getWord();
+    
     // color blocks
     let gray = "⬛";
     let yellow = "🟨";
@@ -66,10 +61,11 @@ async function main(){
 }
 
 function bye(){
+    let goodBye = "Thanks for playing Wordle. Goodbye.\n";
     console.log(goodBye);
 }
 
-async function getWords(){
+async function getWord(){
     const url = "https://random-word-api.herokuapp.com/word?length=5"
 
     try{
@@ -78,7 +74,7 @@ async function getWords(){
             throw new Error(`Response status: ${response.status}`)
         }
         const result = await response.json();
-        return result;
+        return result[0].toUpperCase();
     }catch(error){
         console.error(error.message);
     }
