@@ -27,7 +27,7 @@ async function main(){
 
     const begin = prompt();
 
-    console.log(`Testing purposes - The word is ${wordOfTheDay}`);
+    //console.log(`Testing purposes - The word is ${wordOfTheDay}`);
 
     //counter
     let roundCounter = 0;
@@ -83,7 +83,8 @@ async function getWord(){
             throw new Error(`Response status: ${response.status}`)
         }
         const result = await response.json();
-        return result[0].toUpperCase();
+
+        return result.data[0].word.toUpperCase();
     }catch(error){
         console.error(error.message);
     }
