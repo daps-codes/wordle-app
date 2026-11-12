@@ -22,7 +22,6 @@ Make sure you have the following installed:
     cd wordle-app
     ```
 ### Running the app
-**Start the application**
     ```bash
     node app.js
     ```
