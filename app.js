@@ -8,6 +8,7 @@ async function main(){
     let promptBegin = "Shall we begin? (Y-Yes, N-No)";
     let gameStart = "Good luck. Happy Guessing below!";
     let congrats = "\nCongratulations! You win. The Word of the Day is";
+    let lossMsg = "\nUnfortunately you lost. The Word of the Day is";
 
     // Game logic and architecture
 
@@ -27,6 +28,9 @@ async function main(){
     const begin = prompt();
 
     //console.log(`Testing purposes - The word is ${wordOfTheDay}`);
+
+    //counter
+    let roundCounter = 0;
 
     // Validate input
     if(begin.toLowerCase() == "y"){
@@ -52,6 +56,11 @@ async function main(){
                 bye();
                 break;
             }
+            roundCounter++;
+        }
+
+        if(roundCounter==6){
+            console.log(`${lossMsg} ${wordOfTheDay}.\nBetter luck next time!`)
         }
     }else{
         //exits
