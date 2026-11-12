@@ -27,7 +27,7 @@ async function main(){
 
     const begin = prompt();
 
-    //console.log(`Testing purposes - The word is ${wordOfTheDay}`);
+    console.log(`Testing purposes - The word is ${wordOfTheDay}`);
 
     //counter
     let roundCounter = 0;
@@ -75,7 +75,7 @@ function bye(){
 }
 
 async function getWord(){
-    const url = "https://random-word-api.herokuapp.com/word?length=5"
+    const url = "https://randomapi.dev/api/words?type=noun&minLength=5&maxLength=5&count=1"
 
     try{
         const response = await fetch(url);
