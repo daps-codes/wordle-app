@@ -19,10 +19,10 @@ Make sure you have the following installed:
     ```
 2. **Navigate to the project directory**
     ```bash
-    cd wordle-apple
+    cd wordle-app
     ```
 ### Running the app
-Start the application
+**Start the application**
     ```bash
     node app.js
     ```
