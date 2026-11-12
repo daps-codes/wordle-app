@@ -23,6 +23,6 @@ Make sure you have the following installed:
     ```
 ### Running the app
 **Start the application**
-    ```
+    ```bash
     node app.js
-    ``
+    ```
