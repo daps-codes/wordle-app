@@ -52,6 +52,7 @@ async function main(){
             }
             console.log(resultStr);
             if(resultStr=="🟩🟩🟩🟩🟩"){
+                console.log(`\nScore: ${roundCounter}/6`)
                 console.log(`${congrats} ${wordOfTheDay}.\n`);
                 bye();
                 break;
