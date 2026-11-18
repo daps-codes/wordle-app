@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import { getWord } from '../js/word.js';
-
+import Grid from '../components/Grid.jsx';
 
 function Game(){
     const [round, setRound] = useState(1);
@@ -93,7 +93,9 @@ function Game(){
     return (
         <div>
             <p>Good luck. Happy Guessing below!</p>
-            <div id="grid">GRID GOES HERE</div>
+            <div id="grid">
+                <Grid height={6} width={5}/>
+            </div>
             <input id="guess" placeholder=" Enter a five letter word"></input>
             <button id="submit" onClick={checkGuess}>Submit</button>
             <p id="guessResult"></p>
