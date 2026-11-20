@@ -94,7 +94,7 @@ function Game(){
         <div>
             <p>Good luck. Happy Guessing below!</p>
             <div id="grid">
-                <Grid height={6} width={5}/>
+                <Grid height={6} width={5} wotd={word}/>
             </div>
             <input id="guess" placeholder=" Enter a five letter word"></input>
             <button id="submit" onClick={checkGuess}>Submit</button>
