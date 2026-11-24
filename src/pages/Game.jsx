@@ -10,9 +10,9 @@ function Game(){
     const [won, setWon] = useState(false);
 
     // color blocks
-    const gray = "⬛";
-    const yellow = "🟨";
-    const green = "🟩";
+    //const gray = "⬛";
+    //const yellow = "🟨";
+    //const green = "🟩";
 
     // Runs once when the comonent is mounted
     useEffect(()=>{
@@ -22,12 +22,13 @@ function Game(){
         }
         loadWord()
 
-        const guessEL = document.getElementById('guess');
-        guessEL.maxLength = 5;
+        //const guessEL = document.getElementById('guess');
+        //guessEL.maxLength = 5;
     }, [])
 
     const navigate = useNavigate();
 
+    /*
     const getResult = (guess, wordOfTheDay) => {
         let resultStr = "";
         for(let j = 0; j < guess.length; j++){
@@ -44,14 +45,18 @@ function Game(){
             //console.log(resultStr);
             return resultStr;
     }
+    */
 
+    /*
     const disableControls = () => {
         const guessEl  = document.getElementById('guess');
            guessEl.disabled = true;
            const submitEl = document.getElementById('submit');
            submitEl.disabled = true;
     }
+           */
 
+    /*
     const checkGuess = () => {
         const guessEL = document.getElementById('guess'); 
         const guess = guessEL.value.toUpperCase();
@@ -75,14 +80,17 @@ function Game(){
 
         guessEL.value = '';
     }
+    */
 
-    const redir = () => {
-        setRedirect(true);
+    const redir = (red, match, gameRound) => {
+        setRedirect(red);
+        setWon(match);
+        setRound(gameRound);
     }
 
     // Runs after every render
     useEffect(()=> {
-        console.log("UseEffect called")
+        //console.log("UseEffect called")
         if(redirect){           
             navigate('/result', {state: {won: won, round: round, wordOfTheDay: word}});
         }
@@ -94,12 +102,13 @@ function Game(){
         <div>
             <p>Good luck. Happy Guessing below!</p>
             <div id="grid">
-                <Grid height={6} width={5} wotd={word}/>
+                <Grid onRoundEnd={redir} height={6} width={5} wotd={word}/>
             </div>
-            <input id="guess" placeholder=" Enter a five letter word"></input>
+            
+            {/*<input id="guess" placeholder=" Enter a five letter word"></input>
             <button id="submit" onClick={checkGuess}>Submit</button>
             <p id="guessResult"></p>
-            <button onClick={redir}>View Results</button>
+            <button onClick={redir}>View Results</button>*/}
         </div>
     )
 }
