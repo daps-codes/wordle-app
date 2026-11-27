@@ -2,9 +2,14 @@ import '../App.css'
 
 function Row({ width, id, wotd, onSendData }){
     const arr = new Array(width).fill(0);
+    const letterOutcomes = new Array(width).fill('');
     let cellId = 0;
     let cells = document.querySelector(`#${CSS.escape(id)}.row`);
     let wordMatch =  false;
+
+    const greenHexCode = "#7bb677"
+    const yellowHexCode = "#DABC45"
+    const grayHexCode = "#787C7F"
 
     const evaluateGuess = (guess, cells) => {
         cells = cells.children;
@@ -20,20 +25,30 @@ function Row({ width, id, wotd, onSendData }){
 
             let letter = guess.charAt(j);
             if(wotd.includes(letter) && wotd.charAt(j) == letter){
-                currentCell.style.backgroundColor = "green";
+                currentCell.style.backgroundColor = greenHexCode;
+                currentCell.style.border = greenHexCode;
+                letterOutcomes[j] = greenHexCode;
                 currentCell.disabled = true;
             }else if(wotd.includes(letter)){
-                currentCell.style.backgroundColor = "yellow";
+                currentCell.style.backgroundColor = yellowHexCode;
+                currentCell.style.border = yellowHexCode;
+                letterOutcomes[j] = yellowHexCode;
                 currentCell.disabled = true;
             }else{
-                currentCell.style.backgroundColor = "gray";
+                currentCell.style.backgroundColor = grayHexCode;
+                currentCell.style.border = grayHexCode;
+                letterOutcomes[j] = grayHexCode;
                 currentCell.disabled = true;
             }
         }
-
+        
         if(guess == wotd){
             wordMatch = true;
         }
+        
+        //console.log(letterOutcomes);
+        localStorage.setItem(`Outcome-${id}`, JSON.stringify(letterOutcomes))
+        //console.log(JSON.parse(localStorage.getItem(`Outcome-${id}`)));
     }   
 
     const sendData = () => {
