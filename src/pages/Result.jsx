@@ -9,10 +9,10 @@ function Result(){
     //const  = "BREAK";
 
     return (
-        <div>
+        <div className='container'>
             <p> Score: {round}/6</p>
             <p>{won == true ? congrats : lossMsg} {wordOfTheDay}</p>
-            <button><Link to="/bye">Continue</Link></button>
+            <button className='button'><Link to="/bye">Continue</Link></button>
         </div>
     )
 }
