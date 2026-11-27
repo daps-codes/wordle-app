@@ -2,10 +2,14 @@ import { Link } from 'react-router-dom'
 
 function Begin(){
     return (
-        <div>
-            <p>Shall we begin? (Y-Yes, N-No)</p>
-            <button><Link to="/game">Yes</Link></button>
-            <button><Link to="/bye">No</Link></button>
+        <div className='container' id='begin'>
+            <h1>Let's Play Wordle!</h1>
+            <p>Shall we begin?</p>
+
+            <div className='button-container'>
+                <button className='button'><Link to="/game">Yes</Link></button>
+                <button className='button'><Link to="/bye">No</Link></button>
+            </div>
         </div>
     )
 }
