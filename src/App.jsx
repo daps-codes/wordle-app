@@ -3,7 +3,7 @@ import './App.css'
 
 function App(){
     return (
-        <div id="homepage">
+        <div id="homepage" className='container'>
             <h1>Welcome to Wordle!</h1>
             <p>The rules are simple. Guess the 5 letter word of the day. You have six guesses. After each round, each letter of your guess is assigned a colour:
             </p>
@@ -13,7 +13,7 @@ function App(){
                 <li>Green: in the word, right spot.</li>
             </ul>
             <p>If you correctly guess the word, all letters will be green and you win.</p>
-            <button id="button">
+            <button className="button">
                 <Link to="/begin">Continue</Link>
             </button>
         </div>
